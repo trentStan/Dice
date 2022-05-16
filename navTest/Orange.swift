@@ -21,6 +21,8 @@ class Orange: UIViewController {
         title = "History"
         chart.xAxis.labelPosition = .bottom
         chart.lineData?.setValueFont(NSUIFont(name: "Arial", size: 15.0)!)
+        
+        chart.xAxis.decimals = 0
         chart.noDataText = "please roll dice at least once"
         chart.noDataTextAlignment = .center
         chart.noDataFont = .systemFont(ofSize: 27.0)
@@ -44,6 +46,8 @@ class Orange: UIViewController {
            
         }
         let set1 = LineChartDataSet(entries: yValues, label: "last \(history.count) rolls")
+        set1.circleRadius = 2
+        set1.valueFont = .boldSystemFont(ofSize: 20)
         let data = LineChartData(dataSet: set1)
        
         chart.data = data
