@@ -15,6 +15,8 @@ class Indigo: UIViewController {
     @IBOutlet var imageView2: UIImageView!
     @IBOutlet var dieRes2: UILabel!
     
+    let rollDelay = 2
+    
     var random: [UIImage] = []
     var history: [Int] = []
     let diceImages = ["dice1","dice2","dice3","dice4","dice5","dice6"]

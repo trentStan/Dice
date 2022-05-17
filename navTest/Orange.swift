@@ -42,7 +42,7 @@ class Orange: UIViewController {
         var yValues: [ChartDataEntry] = []
         for (count, value) in history.enumerated() {
            
-            yValues.append( ChartDataEntry(x: Double(count), y: Double(value)))
+            yValues.append( ChartDataEntry(x: Double(count + 1), y: Double(value)))
            
         }
         let set1 = LineChartDataSet(entries: yValues, label: "last \(history.count) rolls")
