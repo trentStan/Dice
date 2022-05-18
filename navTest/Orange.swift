@@ -35,7 +35,7 @@ class Orange: UIViewController {
         db.document("Result").getDocument { (document, error) in
             if let document = document, document.exists {
                 var set: [Int]?
-                if document.data()!.count > 0 {
+                if document.data()!["History"] != nil {
                     set = (document.data()!["History"]! as! [Int])
                 } else{
                     set = []
@@ -46,9 +46,9 @@ class Orange: UIViewController {
                 self.history = set!
                 
                 if self.history != []{
-                self.mean.text = String(Int(self.mean(self.history)))
-                self.mode.text = String(Int(self.mode(self.history)))
-                self.median.text = String(Int(self.median(self.history)))
+                    self.mean.text = String(Int(self.mean(self.history)))
+                    self.mode.text = String(Int(self.mode(self.history)))
+                    self.median.text = String(Int(self.median(self.history)))
                     self.setData()
                     
                 }
@@ -75,9 +75,10 @@ class Orange: UIViewController {
             self.mean.text = String(0)
             self.mode.text = String(0)
             self.median.text = String(0)
-            self.setData()
+            
+            self.chart.clear()
         }
-       
+        
     }
     
     func setData(){

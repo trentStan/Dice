@@ -71,7 +71,7 @@ class Indigo: UIViewController {
                 if let data = document, data.exists {
                     
                     var set: [Int]?
-                    if data.data()!.count > 0 {
+                    if data.data()!["History"] != nil {
                         set = (data.data()!["History"]! as! [Int])
                     } else{
                         set = []
