@@ -7,8 +7,11 @@
 
 import UIKit
 import Charts
+import FirebaseFirestore
 
 class Orange: UIViewController {
+    
+    let db = Firestore.firestore().collection("Dice")
     
     var history: [Int] = []
     @IBOutlet var mean: UILabel!
@@ -16,8 +19,10 @@ class Orange: UIViewController {
     @IBOutlet var median: UILabel!
     
     @IBOutlet var chart: LineChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         title = "History"
         chart.xAxis.labelPosition = .bottom
         chart.lineData?.setValueFont(NSUIFont(name: "Arial", size: 15.0)!)
@@ -27,29 +32,67 @@ class Orange: UIViewController {
         chart.noDataTextAlignment = .center
         chart.noDataFont = .systemFont(ofSize: 27.0)
         
-        if history.count > 0{
-        mean.text = String(Int(mean(history)))
-        mode.text = String(Int(mode(history)))
-            median.text = String(Int(median(history)))
-            
+        db.document("Result").getDocument { (document, error) in
+            if let document = document, document.exists {
+                var set: [Int]?
+                if document.data()!.count > 0 {
+                    set = (document.data()!["History"]! as! [Int])
+                } else{
+                    set = []
+                }
+                
+                
+                print(set!)
+                self.history = set!
+                
+                if self.history != []{
+                self.mean.text = String(Int(self.mean(self.history)))
+                self.mode.text = String(Int(self.mode(self.history)))
+                self.median.text = String(Int(self.median(self.history)))
+                    self.setData()
+                    
+                }
+            } else {
+                print("Document does not exist")
+            }
         }
-        setData()
+        
+        
         // Do any additional setup after loading the view.
+    }
+    
+    @IBAction func clearHistory(){
+        db.document("Result").updateData(["History": FieldValue.delete()]) { err in
+            if let err = err {
+                print("Error updating document: \(err)")
+            } else {
+                print("Document successfully updated")
+            }
+            
+            
+            self.history = []
+            
+            self.mean.text = String(0)
+            self.mode.text = String(0)
+            self.median.text = String(0)
+            self.setData()
+        }
+       
     }
     
     func setData(){
         
         var yValues: [ChartDataEntry] = []
         for (count, value) in history.enumerated() {
-           
+            
             yValues.append( ChartDataEntry(x: Double(count + 1), y: Double(value)))
-           
+            
         }
         let set1 = LineChartDataSet(entries: yValues, label: "last \(history.count) rolls")
         set1.circleRadius = 2
         set1.valueFont = .boldSystemFont(ofSize: 20)
         let data = LineChartData(dataSet: set1)
-       
+        
         chart.data = data
         let formatter = NumberFormatter()
         formatter.minimumFractionDigits = 0
@@ -64,15 +107,15 @@ class Orange: UIViewController {
         let mean = sum / Double(numbers.count)
         return mean.rounded()
     }
-
-     func median(_ numbers: [Int]) -> Double {
+    
+    func median(_ numbers: [Int]) -> Double {
         let sortedNumbers = numbers.sorted(by: { num1, num2 in
             return num1 < num2 })
         let midIndex = numbers.count / 2
         let median = Double(sortedNumbers[midIndex])
         return median
     }
-
+    
     func mode(_ numbers: [Int]) -> Double {
         var occurrences: [Int : Int] = [:]
         for number in numbers {
@@ -91,5 +134,5 @@ class Orange: UIViewController {
         
         return Double(highestPair.key)
     }
-
+    
 }

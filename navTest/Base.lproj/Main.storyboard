@@ -20,11 +20,11 @@
                                 <rect key="frame" x="10" y="54" width="394" height="458.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZJ-1W-47A" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="394" height="380"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="332"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Itj-NH-4Hg" userLabel="Labels">
-                                        <rect key="frame" x="0.0" y="397" width="394" height="20.5"/>
+                                        <rect key="frame" x="0.0" y="349" width="394" height="20.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mean" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dp2-v8-lKR">
                                                 <rect key="frame" x="0.0" y="0.0" width="131.5" height="20.5"/>
@@ -51,7 +51,7 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ekh-eO-8t9" userLabel="Numbers">
-                                        <rect key="frame" x="0.0" y="434.5" width="394" height="24"/>
+                                        <rect key="frame" x="0.0" y="386.5" width="394" height="24"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mLu-O0-TVp" userLabel="MeanRes">
                                                 <rect key="frame" x="0.0" y="0.0" width="131.5" height="24"/>
@@ -77,6 +77,17 @@
                                             <constraint firstItem="21X-V1-d41" firstAttribute="width" secondItem="mLu-O0-TVp" secondAttribute="width" id="jUn-jS-tfQ"/>
                                         </constraints>
                                     </stackView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjs-6R-BJL">
+                                        <rect key="frame" x="0.0" y="427.5" width="394" height="31"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="Fx0-dA-md9"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="filled" title="Clear"/>
+                                        <connections>
+                                            <action selector="clearHistory" destination="BYZ-38-t0r" eventType="touchUpInside" id="slW-mY-eBn"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="458.5" id="Ll8-UX-Gsb"/>

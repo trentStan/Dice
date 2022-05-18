@@ -6,9 +6,10 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class Indigo: UIViewController {
-
+    
     @IBOutlet var imageView1: UIImageView!
     @IBOutlet var dieRes1: UILabel!
     
@@ -16,6 +17,9 @@ class Indigo: UIViewController {
     @IBOutlet var dieRes2: UILabel!
     
     let rollDelay = 2
+    
+    let db = Firestore.firestore()
+    
     
     var random: [UIImage] = []
     var history: [Int] = []
@@ -41,12 +45,14 @@ class Indigo: UIViewController {
         dieRes1.text = String(randomDie1.count + 1)
         dieRes2.text = String(randomDie2.count + 1)
         let result = randomDie1.count + 1 + randomDie2.count + 1
-       // history.append(result)
+        // history.append(result)
         total.text = String(result)
+        
+        
     }
-
+    
     @IBAction func rollDice(_ sender: UIButton) {
-         animate()
+        animate()
         sender.isEnabled = false
         var randomDie1 = (count: Int.random(in: 0...diceImages.count - 1), name: "")
         randomDie1.name = diceImages[randomDie1.count]
@@ -60,15 +66,36 @@ class Indigo: UIViewController {
         imageView2.image = UIImage(named: randomDie2.name)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.dieRes1.text = String(randomDie1.count + 1)
-            self.dieRes2.text = String(randomDie2.count + 1)
-            self.total.text = String(randomDie1.count + 1 + randomDie2.count + 1)
-            let result = randomDie1.count + 1 + randomDie2.count + 1
-            self.history.append(result)
-            sender.isEnabled = true
-            if self.history.count > 15 {
-                self.history.removeFirst(1)
+            let docRef = self.db.collection("Dice")
+            docRef.document("Result").getDocument { (document, error) in
+                if let data = document, data.exists {
+                    
+                    var set: [Int]?
+                    if data.data()!.count > 0 {
+                        set = (data.data()!["History"]! as! [Int])
+                    } else{
+                        set = []
+                    }
+                    
+                    self.history = set!
+                    self.dieRes1.text = String(randomDie1.count + 1)
+                    self.dieRes2.text = String(randomDie2.count + 1)
+                    self.total.text = String(randomDie1.count + 1 + randomDie2.count + 1)
+                    let result = randomDie1.count + 1 + randomDie2.count + 1
+                    self.history.append(result)
+                    sender.isEnabled = true
+                    if self.history.count > 15 {
+                        self.history.removeFirst(1)
+                    }
+                    docRef.document("Result").setData(["History": self.history])
+                } else {
+                    print("Document does not exist")
+                }
             }
+            
+            
+           
+            
             
         }
         
@@ -77,14 +104,14 @@ class Indigo: UIViewController {
     
     @IBAction func goToHistory(_ sender: UIButton) {
         if let vc = storyboard?.instantiateViewController(withIdentifier: "History") as? Orange{
-            vc.history = self.history
+            //vc.history = self.history
             
             navigationController?.pushViewController(vc, animated: true)
         }
-    
+        
     }
     func animate(){
-     
+        
         imageView1.animationImages = dice
         imageView1.animationDuration = 1
         imageView1.animationRepeatCount = 2
@@ -99,5 +126,5 @@ class Indigo: UIViewController {
         
         
     }
-
+    
 }

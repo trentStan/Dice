@@ -17,4 +17,6 @@ target 'improvedDice' do
     # Pods for testing
   end
 pod 'Charts'
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
 end
