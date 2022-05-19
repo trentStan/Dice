@@ -42,6 +42,8 @@ class Indigo: UIViewController {
         imageView1.image = UIImage(named: randomDie1.name)
         imageView2.image = UIImage(named: randomDie2.name)
         
+        
+        
         dieRes1.text = String(randomDie1.count + 1)
         dieRes2.text = String(randomDie2.count + 1)
         let result = randomDie1.count + 1 + randomDie2.count + 1

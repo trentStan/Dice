@@ -32,7 +32,8 @@ class Orange: UIViewController {
         chart.noDataTextAlignment = .center
         chart.noDataFont = .systemFont(ofSize: 27.0)
         
-        db.document("Result").getDocument { (document, error) in
+        
+        db.document("Result").addSnapshotListener { (document, error) in
             if let document = document, document.exists {
                 var set: [Int]?
                 if document.data()!["History"] != nil {
