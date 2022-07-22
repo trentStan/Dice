@@ -8,10 +8,14 @@
 import UIKit
 import Charts
 import FirebaseFirestore
+import Reachability
+import Network
 
 class Orange: UIViewController {
     
     let db = Firestore.firestore().collection("Dice")
+    
+    let monitor = NWPathMonitor()
     
     var history: [Int] = []
     @IBOutlet var mean: UILabel!
@@ -32,6 +36,14 @@ class Orange: UIViewController {
         chart.noDataTextAlignment = .center
         chart.noDataFont = .systemFont(ofSize: 27.0)
         
+        monitor.pathUpdateHandler = {
+            path in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+                self.checkConn()
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
         
         db.document("Result").addSnapshotListener { (document, error) in
             if let document = document, document.exists {
@@ -61,7 +73,17 @@ class Orange: UIViewController {
         
         // Do any additional setup after loading the view.
     }
-    
+    func checkConn(){
+        let reachability = try! Reachability()
+        switch reachability.connection {
+        case .wifi, .cellular: break
+            
+        case .none, .unavailable:
+            print("Disconnected")
+            navigationController?.popViewController(animated: true)
+        }
+        
+    }
     @IBAction func clearHistory(){
         db.document("Result").updateData(["History": FieldValue.delete()]) { err in
             if let err = err {

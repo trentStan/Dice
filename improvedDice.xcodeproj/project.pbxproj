@@ -19,7 +19,6 @@
 		1F056C6F27FC4155004B74DD /* Green.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C6E27FC4155004B74DD /* Green.swift */; };
 		1F056C7127FC4189004B74DD /* Orange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C7027FC4189004B74DD /* Orange.swift */; };
 		1F8B61C72823CD8E001B8658 /* Indigo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B61C62823CD8E001B8658 /* Indigo.swift */; };
-		1FA2FFF2288968BC003A49C0 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FA2FFF1288968BC003A49C0 /* Network.swift */; };
 		1FFCC83B2834DF3D00245A7D /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1FFCC83A2834DF3D00245A7D /* GoogleService-Info.plist */; };
 		9BB512EC2010C48756B989DB /* Pods_improvedDiceTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBF48A207D16A5EA872F72A4 /* Pods_improvedDiceTests.framework */; };
 		AD503B52026FAEEBB2AD4F69 /* Pods_improvedDice_improvedDiceUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C90C7F6E9B466B0D45EA53D3 /* Pods_improvedDice_improvedDiceUITests.framework */; };
@@ -60,7 +59,6 @@
 		1F056C6E27FC4155004B74DD /* Green.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Green.swift; sourceTree = "<group>"; };
 		1F056C7027FC4189004B74DD /* Orange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orange.swift; sourceTree = "<group>"; };
 		1F8B61C62823CD8E001B8658 /* Indigo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indigo.swift; sourceTree = "<group>"; };
-		1FA2FFF1288968BC003A49C0 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		1FFCC83A2834DF3D00245A7D /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		2A6F76C9BF05FEA8EA739AD8 /* Pods-improvedDice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-improvedDice.debug.xcconfig"; path = "Target Support Files/Pods-improvedDice/Pods-improvedDice.debug.xcconfig"; sourceTree = "<group>"; };
 		3031F09234F1CA5014DE3027 /* Pods-improvedDiceTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-improvedDiceTests.release.xcconfig"; path = "Target Support Files/Pods-improvedDiceTests/Pods-improvedDiceTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -137,7 +135,6 @@
 				1F056C7027FC4189004B74DD /* Orange.swift */,
 				1F8B61C62823CD8E001B8658 /* Indigo.swift */,
 				1FFCC83A2834DF3D00245A7D /* GoogleService-Info.plist */,
-				1FA2FFF1288968BC003A49C0 /* Network.swift */,
 			);
 			path = navTest;
 			sourceTree = "<group>";
@@ -427,7 +424,6 @@
 				1F056C3F27FC3F5B004B74DD /* AppDelegate.swift in Sources */,
 				1F056C4127FC3F5B004B74DD /* SceneDelegate.swift in Sources */,
 				1F056C7127FC4189004B74DD /* Orange.swift in Sources */,
-				1FA2FFF2288968BC003A49C0 /* Network.swift in Sources */,
 				1F056C6F27FC4155004B74DD /* Green.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

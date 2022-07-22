@@ -64,7 +64,7 @@ class Indigo: UIViewController {
         monitor.pathUpdateHandler = {
             path in
             DispatchQueue.main.asyncAfter(deadline: .now() + 1){
-            self.checkConn()
+                self.checkConn()
             }
         }
         let queue = DispatchQueue(label: "Monitor")
@@ -86,7 +86,7 @@ class Indigo: UIViewController {
         }
         
     }
-
+    
     
     @IBAction func rollDice(_ sender: UIButton) {
         animate()
@@ -128,6 +128,7 @@ class Indigo: UIViewController {
                         }
                         docRef.document("Result").setData(["History": self.history])
                     } else {
+                        
                         print("Document does not exist")
                     }
                 }
@@ -135,7 +136,13 @@ class Indigo: UIViewController {
                 
             }
             
-            
+        }else {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                self.dieRes1.text = String(randomDie1.count + 1)
+                self.dieRes2.text = String(randomDie2.count + 1)
+                self.total.text = String(randomDie1.count + 1 + randomDie2.count + 1)
+                sender.isEnabled = true
+            }
         }
         
         
