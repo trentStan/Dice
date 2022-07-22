@@ -19,4 +19,5 @@ target 'improvedDice' do
 pod 'Charts'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore'
+pod 'ReachabilitySwift'
 end

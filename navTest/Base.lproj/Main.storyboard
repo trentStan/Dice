@@ -253,6 +253,7 @@
                     <connections>
                         <outlet property="dieRes1" destination="MZe-bC-YoN" id="0jU-Sm-H2W"/>
                         <outlet property="dieRes2" destination="clI-Am-5ji" id="q0h-zn-2Yq"/>
+                        <outlet property="histBtn" destination="wQr-Rm-klX" id="F3l-n7-GhU"/>
                         <outlet property="imageView1" destination="12M-q2-42o" id="B3q-HY-M5k"/>
                         <outlet property="imageView2" destination="ODU-lN-3dm" id="s30-lf-R0u"/>
                         <outlet property="total" destination="z0V-EP-5L9" id="TTM-W5-wBf"/>

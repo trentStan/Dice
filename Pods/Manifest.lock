@@ -720,12 +720,14 @@ PODS:
   - nanopb/decode (2.30908.0)
   - nanopb/encode (2.30908.0)
   - PromisesObjC (2.1.0)
+  - ReachabilitySwift (5.0.0)
   - SwiftAlgorithms (1.0.0)
 
 DEPENDENCIES:
   - Charts
   - FirebaseAuth
   - FirebaseFirestore
+  - ReachabilitySwift
 
 SPEC REPOS:
   trunk:
@@ -746,6 +748,7 @@ SPEC REPOS:
     - Libuv-gRPC
     - nanopb
     - PromisesObjC
+    - ReachabilitySwift
     - SwiftAlgorithms
 
 SPEC CHECKSUMS:
@@ -766,8 +769,9 @@ SPEC CHECKSUMS:
   Libuv-gRPC: 55e51798e14ef436ad9bc45d12d43b77b49df378
   nanopb: a0ba3315591a9ae0a16a309ee504766e90db0c96
   PromisesObjC: 99b6f43f9e1044bd87a95a60beff28c2c44ddb72
+  ReachabilitySwift: 985039c6f7b23a1da463388634119492ff86c825
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
 
-PODFILE CHECKSUM: 53ea21fb03dd6d4692a70c3f9872b69947568f31
+PODFILE CHECKSUM: c68c5d5c3c9e2b86089e0e4c7dba28bbd96d50f2
 
 COCOAPODS: 1.11.3

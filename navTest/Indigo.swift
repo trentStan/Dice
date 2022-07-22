@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseFirestore
+import Reachability
+import Network
 
 class Indigo: UIViewController {
     
@@ -18,8 +20,12 @@ class Indigo: UIViewController {
     
     let rollDelay = 2
     
-    let db = Firestore.firestore()
     
+    let monitor = NWPathMonitor()
+    
+    var conn = Bool()
+    
+    let db = Firestore.firestore()
     
     var random: [UIImage] = []
     var history: [Int] = []
@@ -27,8 +33,12 @@ class Indigo: UIViewController {
     var dice: [UIImage] = []
     @IBOutlet var total: UILabel!
     
+    @IBOutlet var histBtn: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         for x in diceImages{
             dice.append(UIImage(named: x)!)
@@ -51,7 +61,32 @@ class Indigo: UIViewController {
         total.text = String(result)
         
         
+        monitor.pathUpdateHandler = {
+            path in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1){
+            self.checkConn()
+            }
+        }
+        let queue = DispatchQueue(label: "Monitor")
+        monitor.start(queue: queue)
     }
+    
+    
+    func checkConn(){
+        let reachability = try! Reachability()
+        switch reachability.connection {
+        case .wifi, .cellular:
+            conn = true
+            histBtn.isEnabled = true
+            print("Reachable")
+        case .none, .unavailable:
+            print("Unreachable")
+            histBtn.isEnabled = false
+            conn = false
+        }
+        
+    }
+
     
     @IBAction func rollDice(_ sender: UIButton) {
         animate()
@@ -67,36 +102,38 @@ class Indigo: UIViewController {
         imageView1.image = UIImage(named: randomDie1.name)
         imageView2.image = UIImage(named: randomDie2.name)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let docRef = self.db.collection("Dice")
-            docRef.document("Result").getDocument { (document, error) in
-                if let data = document, data.exists {
-                    
-                    var set: [Int]?
-                    if data.data()!["History"] != nil {
-                        set = (data.data()!["History"]! as! [Int])
-                    } else{
-                        set = []
+        
+        if conn {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                let docRef = self.db.collection("Dice")
+                docRef.document("Result").getDocument { (document, error) in
+                    if let data = document, data.exists {
+                        
+                        var set: [Int]?
+                        if data.data()!["History"] != nil {
+                            set = (data.data()!["History"]! as! [Int])
+                        } else{
+                            set = []
+                        }
+                        
+                        self.history = set!
+                        self.dieRes1.text = String(randomDie1.count + 1)
+                        self.dieRes2.text = String(randomDie2.count + 1)
+                        self.total.text = String(randomDie1.count + 1 + randomDie2.count + 1)
+                        let result = randomDie1.count + 1 + randomDie2.count + 1
+                        self.history.append(result)
+                        sender.isEnabled = true
+                        if self.history.count > 15 {
+                            self.history.removeFirst(1)
+                        }
+                        docRef.document("Result").setData(["History": self.history])
+                    } else {
+                        print("Document does not exist")
                     }
-                    
-                    self.history = set!
-                    self.dieRes1.text = String(randomDie1.count + 1)
-                    self.dieRes2.text = String(randomDie2.count + 1)
-                    self.total.text = String(randomDie1.count + 1 + randomDie2.count + 1)
-                    let result = randomDie1.count + 1 + randomDie2.count + 1
-                    self.history.append(result)
-                    sender.isEnabled = true
-                    if self.history.count > 15 {
-                        self.history.removeFirst(1)
-                    }
-                    docRef.document("Result").setData(["History": self.history])
-                } else {
-                    print("Document does not exist")
                 }
+                
+                
             }
-            
-            
-           
             
             
         }
