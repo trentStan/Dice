@@ -13,9 +13,6 @@
 		1F056C4627FC3F5B004B74DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F056C4427FC3F5B004B74DD /* Main.storyboard */; };
 		1F056C4827FC3F5C004B74DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F056C4727FC3F5C004B74DD /* Assets.xcassets */; };
 		1F056C4B27FC3F5C004B74DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1F056C4927FC3F5C004B74DD /* LaunchScreen.storyboard */; };
-		1F056C5627FC3F5C004B74DD /* navTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C5527FC3F5C004B74DD /* navTestTests.swift */; };
-		1F056C6027FC3F5C004B74DD /* navTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C5F27FC3F5C004B74DD /* navTestUITests.swift */; };
-		1F056C6227FC3F5C004B74DD /* navTestUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C6127FC3F5C004B74DD /* navTestUITestsLaunchTests.swift */; };
 		1F056C6F27FC4155004B74DD /* Green.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C6E27FC4155004B74DD /* Green.swift */; };
 		1F056C7127FC4189004B74DD /* Orange.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F056C7027FC4189004B74DD /* Orange.swift */; };
 		1F8B61C72823CD8E001B8658 /* Indigo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8B61C62823CD8E001B8658 /* Indigo.swift */; };
@@ -52,10 +49,7 @@
 		1F056C4A27FC3F5C004B74DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1F056C4C27FC3F5C004B74DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F056C5127FC3F5C004B74DD /* improvedDiceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = improvedDiceTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F056C5527FC3F5C004B74DD /* navTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navTestTests.swift; sourceTree = "<group>"; };
 		1F056C5B27FC3F5C004B74DD /* improvedDiceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = improvedDiceUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		1F056C5F27FC3F5C004B74DD /* navTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navTestUITests.swift; sourceTree = "<group>"; };
-		1F056C6127FC3F5C004B74DD /* navTestUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = navTestUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		1F056C6E27FC4155004B74DD /* Green.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Green.swift; sourceTree = "<group>"; };
 		1F056C7027FC4189004B74DD /* Orange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orange.swift; sourceTree = "<group>"; };
 		1F8B61C62823CD8E001B8658 /* Indigo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Indigo.swift; sourceTree = "<group>"; };
@@ -103,8 +97,6 @@
 			isa = PBXGroup;
 			children = (
 				1F056C3D27FC3F5B004B74DD /* navTest */,
-				1F056C5427FC3F5C004B74DD /* navTestTests */,
-				1F056C5E27FC3F5C004B74DD /* navTestUITests */,
 				1F056C3C27FC3F5B004B74DD /* Products */,
 				43D69794A15042F55150CF69 /* Pods */,
 				9E2493F7632370074F151CDE /* Frameworks */,
@@ -137,23 +129,6 @@
 				1FFCC83A2834DF3D00245A7D /* GoogleService-Info.plist */,
 			);
 			path = navTest;
-			sourceTree = "<group>";
-		};
-		1F056C5427FC3F5C004B74DD /* navTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				1F056C5527FC3F5C004B74DD /* navTestTests.swift */,
-			);
-			path = navTestTests;
-			sourceTree = "<group>";
-		};
-		1F056C5E27FC3F5C004B74DD /* navTestUITests */ = {
-			isa = PBXGroup;
-			children = (
-				1F056C5F27FC3F5C004B74DD /* navTestUITests.swift */,
-				1F056C6127FC3F5C004B74DD /* navTestUITestsLaunchTests.swift */,
-			);
-			path = navTestUITests;
 			sourceTree = "<group>";
 		};
 		43D69794A15042F55150CF69 /* Pods */ = {
@@ -432,7 +407,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F056C5627FC3F5C004B74DD /* navTestTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -440,8 +414,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F056C6227FC3F5C004B74DD /* navTestUITestsLaunchTests.swift in Sources */,
-				1F056C6027FC3F5C004B74DD /* navTestUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
